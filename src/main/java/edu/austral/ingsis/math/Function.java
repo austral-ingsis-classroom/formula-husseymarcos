@@ -1,3 +1,10 @@
 package edu.austral.ingsis.math;
 
-public interface Function {}
+import java.util.ArrayList;
+import java.util.List;
+
+public class Function {
+    List<Expression> expressions = new ArrayList<>();
+
+
+}

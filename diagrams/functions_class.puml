@@ -1,0 +1,34 @@
+@startuml
+
+class MathEngine{
+    double evaluateFunction(Function function)
+}
+
+class Function{
+    //Constructor que se le pase un string
+    List<Operation> expressions
+    List<Variable> variables
+    Double evaluate();
+    void printEquation();
+}
+
+
+interface Expression{
+    Double evaluate()
+}
+
+class Number implements Expression{
+}
+
+class Sum implements Expression{
+}
+
+class Variable{
+    //Constructor que se le pase un string y el valor real
+    getVariable()
+    getRealValue()
+    printVariable()
+}
+
+
+@enduml
