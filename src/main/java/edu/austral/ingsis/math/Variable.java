@@ -29,7 +29,8 @@ public class Variable implements Expression{
     }
 
     @Override
-    public void printExpression() {
-        System.out.println(getName());
+    public String toString() {
+        return getName();
     }
+
 }

@@ -14,7 +14,8 @@ public class Number implements Expression{
     }
 
     @Override
-    public void printExpression() {
-        System.out.println(value);
+    public String toString() {
+        return String.valueOf(value);
     }
+
 }

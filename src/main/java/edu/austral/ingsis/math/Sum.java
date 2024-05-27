@@ -17,7 +17,7 @@ public class Sum implements Expression{
     }
 
     @Override
-    public void printExpression() {
-        System.out.println(firstNum + "+" + secondNum);
+    public String toString() {
+        return firstNum + " + " + secondNum;
     }
 }
