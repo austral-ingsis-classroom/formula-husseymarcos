@@ -14,6 +14,4 @@ public class Function {
         return expressions;
     }
 
-    
-
 }

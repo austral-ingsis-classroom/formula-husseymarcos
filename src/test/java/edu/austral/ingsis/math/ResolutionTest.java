@@ -2,17 +2,32 @@ package edu.austral.ingsis.math;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class ResolutionTest {
 
+  MathEngine mathEngine = new MathEngine();
+
   /** Case 1 + 6 */
   @Test
   public void shouldResolveSimpleFunction1() {
+
+
+    List<Expression> expressions = new ArrayList<>();
+
+    expressions.add(new Sum(1, 6));
+    Function function = new Function(expressions);
+
+    mathEngine.addFunction(function);
+    Double mathEngineResult = mathEngine.evaluateFunction();
+
     final Double result = 7d;
 
-    assertThat(result, equalTo(7d));
+    assertThat(result, equalTo(mathEngineResult));
   }
 
   /** Case 12 / 2 */

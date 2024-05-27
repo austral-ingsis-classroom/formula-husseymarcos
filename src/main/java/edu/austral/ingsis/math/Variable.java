@@ -2,11 +2,11 @@ package edu.austral.ingsis.math;
 
 public class Variable implements Expression{
 
-    private String name;
+    private final String name;
 
-    private Double value;
+    private final int value;
 
-    public Variable(String name, Double value) {
+    public Variable(String name, int value) {
         this.name = name;
         this.value = value;
     }
@@ -15,7 +15,7 @@ public class Variable implements Expression{
         return name;
     }
 
-    public Double getValue() {
+    public int getValue() {
         return value;
     }
 
@@ -24,7 +24,7 @@ public class Variable implements Expression{
     }
 
     @Override
-    public Double evaluate() {
+    public int evaluate() {
         return getValue();
     }
 

@@ -2,16 +2,30 @@ package edu.austral.ingsis.math;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class PrintTest {
 
+  MathEngine mathEngine = new MathEngine();
+
+
+
   /** Case 1 + 6 */
   @Test
   public void shouldPrintFunction1() {
+
+    List<Expression> expressions = new ArrayList<>();
+    expressions.add(new Sum(1, 6));
+
+    Function function = new Function(expressions);
+    mathEngine.addFunction(function);
+
     final String expected = "1 + 6";
-    final String result = expected;
+    final String result = mathEngine.printFunction();
 
     assertThat(result, equalTo(expected));
   }

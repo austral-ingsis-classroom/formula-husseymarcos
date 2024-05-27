@@ -2,14 +2,14 @@ package edu.austral.ingsis.math;
 
 public class Number implements Expression{
 
-    private final Double value;
+    private final int value;
 
-    public Number(Double value) {
+    public Number(int value) {
         this.value = value;
     }
 
     @Override
-    public Double evaluate() {
+    public int evaluate() {
         return value;
     }
 

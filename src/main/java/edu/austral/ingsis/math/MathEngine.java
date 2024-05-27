@@ -27,7 +27,7 @@ public class MathEngine {
         this.function = function;
     }
 
-    public void printFunction(){
+    public String printFunction(){
         StringBuilder finalString = new StringBuilder();
 
         List<Expression> functionExpressions = function.getExpressions();
@@ -35,6 +35,6 @@ public class MathEngine {
             finalString.append(expression.toString());
         }
 
-        System.out.println(finalString);
+        return finalString.toString();
     }
 }

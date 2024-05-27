@@ -2,17 +2,17 @@ package edu.austral.ingsis.math;
 
 public class Sum implements Expression{
 
-    private final Double firstNum;
+    private final int firstNum;
 
-    private final Double secondNum;
+    private final int secondNum;
 
-    public Sum(Double firstNum, Double secondNum) {
+    public Sum(int firstNum, int secondNum) {
         this.firstNum = firstNum;
         this.secondNum = secondNum;
     }
 
     @Override
-    public Double evaluate() {
+    public int evaluate() {
         return firstNum + secondNum;
     }
 
