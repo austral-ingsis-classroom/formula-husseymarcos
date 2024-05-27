@@ -1,6 +1,6 @@
-package edu.austral.ingsis.math;
+package edu.austral.ingsis.math.expression;
 
-public class Sum implements Expression{
+public class Sum implements Expression {
 
     private final int firstNum;
 

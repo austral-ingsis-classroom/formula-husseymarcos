@@ -1,6 +1,6 @@
-package edu.austral.ingsis.math;
+package edu.austral.ingsis.math.expression;
 
-public class Number implements Expression{
+public class Number implements Expression {
 
     private final int value;
 

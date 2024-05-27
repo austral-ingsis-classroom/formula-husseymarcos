@@ -1,18 +1,40 @@
 package edu.austral.ingsis.math;
 
+import edu.austral.ingsis.math.expression.Expression;
+import edu.austral.ingsis.math.expression.Sum;
+import edu.austral.ingsis.math.expression.Variable;
 import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class ResolutionWithVariablesTest {
 
+  MathEngine mathEngine = new MathEngine();
+
+
   /** Case 1 + x where x = 3 */
   @Test
   public void shouldResolveFunction1() {
+
+    List<Expression> expressions = new ArrayList<>();
+
+    Variable variable = new Variable("x", 3);
+    int x = variable.evaluate();
+
+    expressions.add(new Sum(1, x));
+
+    Function function = new Function(expressions);
+    mathEngine.addFunction(function);
+
+    Double mathEngineResult = mathEngine.evaluateFunction();
+
     final Double result = 4d;
 
-    assertThat(result, equalTo(4d));
+    assertThat(result, equalTo(mathEngineResult));
   }
 
   /** Case 12 / div where div = 4 */

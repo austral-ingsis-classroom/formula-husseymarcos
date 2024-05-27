@@ -1,6 +1,6 @@
-package edu.austral.ingsis.math;
+package edu.austral.ingsis.math.expression;
 
-public class Variable implements Expression{
+public class Variable implements Expression {
 
     private final String name;
 

@@ -1,5 +1,7 @@
 package edu.austral.ingsis.math;
 
+import edu.austral.ingsis.math.expression.Expression;
+
 import java.util.List;
 
 public class MathEngine {
