@@ -39,4 +39,8 @@ public class MathEngine {
 
         return finalString.toString();
     }
+
+    public List<String> getVariablesFromFunction(){
+        return function.getVariables();
+    }
 }

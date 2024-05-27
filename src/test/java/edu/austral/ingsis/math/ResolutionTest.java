@@ -2,6 +2,7 @@ package edu.austral.ingsis.math;
 
 import edu.austral.ingsis.math.expression.Expression;
 import edu.austral.ingsis.math.expression.Sum;
+import edu.austral.ingsis.math.expression.Variable;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -13,6 +14,8 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class ResolutionTest {
 
   MathEngine mathEngine = new MathEngine();
+  List<String> variables = new ArrayList<>();
+
 
   /** Case 1 + 6 */
   @Test
@@ -22,7 +25,7 @@ public class ResolutionTest {
     List<Expression> expressions = new ArrayList<>();
 
     expressions.add(new Sum(1, 6));
-    Function function = new Function(expressions);
+    Function function = new Function(expressions, variables);
 
     mathEngine.addFunction(function);
     Double mathEngineResult = mathEngine.evaluateFunction();

@@ -14,20 +14,22 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class ResolutionWithVariablesTest {
 
   MathEngine mathEngine = new MathEngine();
+  List<Expression> expressions = new ArrayList<>();
+  List<String> variables = new ArrayList<>();
 
 
   /** Case 1 + x where x = 3 */
   @Test
   public void shouldResolveFunction1() {
 
-    List<Expression> expressions = new ArrayList<>();
+
 
     Variable variable = new Variable("x", 3);
     int x = variable.evaluate();
 
     expressions.add(new Sum(1, x));
 
-    Function function = new Function(expressions);
+    Function function = new Function(expressions, variables);
     mathEngine.addFunction(function);
 
     Double mathEngineResult = mathEngine.evaluateFunction();

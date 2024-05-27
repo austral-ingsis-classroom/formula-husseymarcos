@@ -1,20 +1,36 @@
 package edu.austral.ingsis.math;
 
+import edu.austral.ingsis.math.expression.Division;
+import edu.austral.ingsis.math.expression.Expression;
+import edu.austral.ingsis.math.expression.Sum;
+import edu.austral.ingsis.math.expression.Variable;
 import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.hamcrest.Matchers.empty;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class ListVariablesTest {
 
+  MathEngine mathEngine = new MathEngine();
+  List<Expression> expressions = new ArrayList<>();
+  List<String> variables = new ArrayList<>();
+
+
   /** Case 1 + 6 */
   @Test
   public void shouldListVariablesFunction1() {
-    final List<String> result = Collections.emptyList();
+
+    expressions.add(new Sum(1, 6));
+    Function function = new Function(expressions, variables);
+    mathEngine.addFunction(function);
+
+
+    final List<String> result = mathEngine.getVariablesFromFunction();
 
     assertThat(result, empty());
   }
@@ -22,7 +38,16 @@ public class ListVariablesTest {
   /** Case 12 / div */
   @Test
   public void shouldListVariablesFunction2() {
-    final List<String> result = Collections.emptyList();
+    Variable divVariable = new Variable("div", 10);
+    int div = divVariable.evaluate();
+
+    expressions.add(new Division(12, div));
+    variables.add(divVariable.toString());
+
+    Function function = new Function(expressions, variables);
+    mathEngine.addFunction(function);
+
+    final List<String> result = mathEngine.getVariablesFromFunction();
 
     assertThat(result, containsInAnyOrder("div"));
   }
