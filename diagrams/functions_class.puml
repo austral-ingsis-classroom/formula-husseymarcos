@@ -1,34 +1,45 @@
 @startuml
 
 class MathEngine{
-    double evaluateFunction(Function function)
+    Function function
+    double evaluateFunction()
+    void addFunction(Function function)
+    String printFunction()
+    List<String> getVariablesFromFunction()
 }
+MathEngine --> Function
 
 class Function{
-    //Constructor que se le pase un string
-    List<Operation> expressions
-    List<Variable> variables
+    List<Operation> listOfOperations
     Double evaluate();
     void printEquation();
 }
 
+Function --> Operation
+
 
 interface Expression{
-    Double evaluate()
+    Double evaluate(Operator)
 }
 
-class Number implements Expression{
+interface Operation{
+    int evaluate(Expression expression)
+    List<Expression> getExpressions
 }
 
-class Sum implements Expression{
+Operation -> Expression
+
+class Sum implements Operation{
+    int evaluate(Expression expression)
 }
 
-class Variable{
-    //Constructor que se le pase un string y el valor real
-    getVariable()
-    getRealValue()
-    printVariable()
+class Variable implements Expression{
 }
+
+class Constant implements Expression{
+}
+
+interface Expression{}
 
 
 @enduml

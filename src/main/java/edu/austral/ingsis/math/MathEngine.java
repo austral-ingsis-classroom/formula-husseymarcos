@@ -1,7 +1,9 @@
 package edu.austral.ingsis.math;
 
 import edu.austral.ingsis.math.expression.Expression;
+import edu.austral.ingsis.math.expression.Variable;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MathEngine {
@@ -13,10 +15,10 @@ public class MathEngine {
         if (function != null) {
             double result = 0;
 
-            List<Expression> expressionList = function.getExpressions();
+            List<Operation> expressionList = function.getOperations();
 
-            for (Expression expression : expressionList) {
-                result += expression.evaluate();
+            for (Operation operation : expressionList) {
+                result += operation.evaluate();
             }
 
             return result;
@@ -25,22 +27,33 @@ public class MathEngine {
         throw new RuntimeException("No Function defined");
     }
 
-    public void addFunction(Function function) {
+    public void setFunction(Function function) {
         this.function = function;
     }
 
     public String printFunction(){
         StringBuilder finalString = new StringBuilder();
+        List<Operation> functionExpressions = function.getOperations();
 
-        List<Expression> functionExpressions = function.getExpressions();
-        for (Expression expression : functionExpressions) {
-            finalString.append(expression.toString());
+        for (Operation operation : functionExpressions) {
+            String expressionString = operation.toString();
+            finalString.append(expressionString);
         }
 
         return finalString.toString();
     }
 
     public List<String> getVariablesFromFunction(){
-        return function.getVariables();
+        List<String> variables = new ArrayList<>();
+        List<Operation> operations = function.getOperations();
+        for (Operation operation: operations) {
+            List<Expression> expressions = operation.getExpressions();
+            for (Expression expression: expressions)
+                if (expression instanceof Variable) {
+                    String name = ((Variable) expression).getName();
+                    variables.add(name);
+            }
+        }
+        return variables;
     }
 }

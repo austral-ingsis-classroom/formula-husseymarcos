@@ -1,9 +1,6 @@
 package edu.austral.ingsis.math;
 
-import edu.austral.ingsis.math.expression.Division;
-import edu.austral.ingsis.math.expression.Expression;
-import edu.austral.ingsis.math.expression.Sum;
-import edu.austral.ingsis.math.expression.Variable;
+import edu.austral.ingsis.math.expression.*;
 import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -17,18 +14,21 @@ import java.util.List;
 public class ListVariablesTest {
 
   MathEngine mathEngine = new MathEngine();
-  List<Expression> expressions = new ArrayList<>();
-  List<String> variables = new ArrayList<>();
+  List<Operation> operations = new ArrayList<>();
 
 
   /** Case 1 + 6 */
   @Test
   public void shouldListVariablesFunction1() {
 
-    expressions.add(new Sum(1, 6));
-    Function function = new Function(expressions, variables);
-    mathEngine.addFunction(function);
+    Expression firstConstant = new Constant(1);
+    Expression secondConstant = new Constant(6);
 
+    operations.add(new Sum(firstConstant, secondConstant));
+
+
+    Function function = new Function(operations);
+    mathEngine.setFunction(function);
 
     final List<String> result = mathEngine.getVariablesFromFunction();
 
@@ -39,13 +39,13 @@ public class ListVariablesTest {
   @Test
   public void shouldListVariablesFunction2() {
     Variable divVariable = new Variable("div", 10);
-    int div = divVariable.evaluate();
 
-    expressions.add(new Division(12, div));
-    variables.add(divVariable.toString());
+    Expression firstConstant = new Constant(12);
 
-    Function function = new Function(expressions, variables);
-    mathEngine.addFunction(function);
+    operations.add(new Division(firstConstant, divVariable));
+
+    Function function = new Function(operations);
+    mathEngine.setFunction(function);
 
     final List<String> result = mathEngine.getVariablesFromFunction();
 

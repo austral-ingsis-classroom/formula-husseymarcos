@@ -19,10 +19,6 @@ public class Variable implements Expression {
         return value;
     }
 
-    public void printName(){
-        System.out.println(getName());
-    }
-
     @Override
     public int evaluate() {
         return getValue();
