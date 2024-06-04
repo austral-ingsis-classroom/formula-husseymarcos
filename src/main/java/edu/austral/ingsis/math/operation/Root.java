@@ -1,21 +1,21 @@
-package edu.austral.ingsis.math.expression;
+package edu.austral.ingsis.math.operation;
 
-import edu.austral.ingsis.math.Operation;
+import edu.austral.ingsis.math.expression.Expression;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Module implements Operation {
+public class Root implements Operation {
 
-    private final Expression expression;
+    private Expression expression;
 
-    public Module(Expression expression) {
+    public Root(Expression expression) {
         this.expression = expression;
     }
 
     @Override
     public int evaluate() {
-        return Math.abs(expression.evaluate());
+        return (int) Math.sqrt(expression.evaluate());
     }
 
     @Override

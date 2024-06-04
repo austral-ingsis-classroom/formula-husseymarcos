@@ -1,4 +1,4 @@
-package edu.austral.ingsis.math;
+package edu.austral.ingsis.math.operation;
 
 
 import edu.austral.ingsis.math.expression.Expression;

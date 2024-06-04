@@ -1,6 +1,10 @@
 package edu.austral.ingsis.math;
 
 import edu.austral.ingsis.math.expression.*;
+import edu.austral.ingsis.math.operation.Division;
+import edu.austral.ingsis.math.operation.Operation;
+import edu.austral.ingsis.math.operation.Product;
+import edu.austral.ingsis.math.operation.Sum;
 import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -38,11 +42,12 @@ public class ListVariablesTest {
   /** Case 12 / div */
   @Test
   public void shouldListVariablesFunction2() {
-    Variable divVariable = new Variable("div", 10);
+    Expression divVariable = new Variable("div", 10);
 
     Expression firstConstant = new Constant(12);
 
-    operations.add(new Division(firstConstant, divVariable));
+    Operation e = new Division(firstConstant, divVariable);
+    operations.add(e);
 
     Function function = new Function(operations);
     mathEngine.setFunction(function);
@@ -55,7 +60,25 @@ public class ListVariablesTest {
   /** Case (9 / x) * y */
   @Test
   public void shouldListVariablesFunction3() {
-    final List<String> result = Collections.emptyList();
+
+    Expression nine = new Constant(9);
+
+    Expression x = new Variable("x", 10);
+
+    Operation division = new Division(nine, x);
+
+    Expression parenthesis = new Parenthesis(division);
+
+    Expression y = new Variable("y", 10);
+
+    Operation multiplication = new Product(y, parenthesis);
+
+    operations.add(multiplication);
+
+    Function function = new Function(operations);
+    mathEngine.setFunction(function);
+
+    final List<String> result = mathEngine.getVariablesFromFunction();
 
     assertThat(result, containsInAnyOrder("x", "y"));
   }

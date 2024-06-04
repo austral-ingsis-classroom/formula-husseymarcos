@@ -18,4 +18,9 @@ public class Constant implements Expression {
         return String.valueOf(value);
     }
 
+    @Override
+    public String getName() {
+        return "" + evaluate();
+    }
+
 }

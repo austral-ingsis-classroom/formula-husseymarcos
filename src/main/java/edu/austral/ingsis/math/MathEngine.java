@@ -1,7 +1,9 @@
 package edu.austral.ingsis.math;
 
 import edu.austral.ingsis.math.expression.Expression;
+import edu.austral.ingsis.math.expression.Parenthesis;
 import edu.austral.ingsis.math.expression.Variable;
+import edu.austral.ingsis.math.operation.Operation;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,8 +51,8 @@ public class MathEngine {
         for (Operation operation: operations) {
             List<Expression> expressions = operation.getExpressions();
             for (Expression expression: expressions)
-                if (expression instanceof Variable) {
-                    String name = ((Variable) expression).getName();
+                if (expression instanceof Variable || expression instanceof Parenthesis) {
+                    String name = expression.getName();
                     variables.add(name);
             }
         }

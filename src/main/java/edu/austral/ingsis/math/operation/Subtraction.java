@@ -1,24 +1,24 @@
-package edu.austral.ingsis.math.expression;
+package edu.austral.ingsis.math.operation;
 
-import edu.austral.ingsis.math.Operation;
+import edu.austral.ingsis.math.expression.Expression;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Division implements Operation {
+public class Subtraction implements Operation {
 
     private final Expression firstNum;
 
     private final Expression secondNum;
 
-    public Division(Expression firstNum, Expression secondNum) {
+    public Subtraction(Expression firstNum, Expression secondNum) {
         this.firstNum = firstNum;
         this.secondNum = secondNum;
     }
 
     @Override
     public int evaluate() {
-        return firstNum.evaluate() / secondNum.evaluate();
+        return firstNum.evaluate() - secondNum.evaluate();
     }
 
     @Override
@@ -31,6 +31,6 @@ public class Division implements Operation {
 
     @Override
     public String toString() {
-        return firstNum + "/" + secondNum;
+        return firstNum + " - " + secondNum;
     }
 }

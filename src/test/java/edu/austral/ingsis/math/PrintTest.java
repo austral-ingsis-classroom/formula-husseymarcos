@@ -1,7 +1,7 @@
 //package edu.austral.ingsis.math;
 //
 //import edu.austral.ingsis.math.expression.Expression;
-//import edu.austral.ingsis.math.expression.Sum;
+//import edu.austral.ingsis.math.operation.Sum;
 //import edu.austral.ingsis.math.expression.Variable;
 //import org.junit.jupiter.api.Test;
 //

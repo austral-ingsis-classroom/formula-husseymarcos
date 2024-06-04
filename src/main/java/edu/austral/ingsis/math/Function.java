@@ -1,6 +1,8 @@
 package edu.austral.ingsis.math;
 
 
+import edu.austral.ingsis.math.operation.Operation;
+
 import java.util.List;
 
 public class Function {

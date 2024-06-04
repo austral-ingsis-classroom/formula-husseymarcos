@@ -2,7 +2,7 @@
 //
 //import edu.austral.ingsis.math.expression.Constant;
 //import edu.austral.ingsis.math.expression.Expression;
-//import edu.austral.ingsis.math.expression.Sum;
+//import edu.austral.ingsis.math.operation.Sum;
 //import org.junit.jupiter.api.Test;
 //
 //import java.util.ArrayList;
