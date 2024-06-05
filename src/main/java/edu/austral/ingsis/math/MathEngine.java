@@ -28,31 +28,38 @@ public class MathEngine {
 
     if (function instanceof Variable) {
       variableSet.add(((Variable) function).getName());
-    } else if (function instanceof Sum addition) {
+    } else if (function instanceof Sum) {
+      Sum addition = (Sum) function;
       collectVariablesRecursive(addition.getFirstNum());
       collectVariablesRecursive(addition.getSecondNum());
-    } else if (function instanceof Subtraction subtraction) {
+    } else if (function instanceof Subtraction) {
+      Subtraction subtraction = (Subtraction) function;
       collectVariablesRecursive(subtraction.getFirstNum());
       collectVariablesRecursive(subtraction.getSecondNum());
-    } else if (function instanceof Product multiplication) {
+    } else if (function instanceof Product) {
+      Product multiplication = (Product) function;
       collectVariablesRecursive(multiplication.getFirstNum());
       collectVariablesRecursive(multiplication.getSecondNum());
-    } else if (function instanceof Power power) {
+    } else if (function instanceof Power) {
+      Power power = (Power) function;
       collectVariablesRecursive(power.getExpression());
       collectVariablesRecursive(power.getPowerOf());
-    } else if (function instanceof Parenthesis parenthesis) {
+    } else if (function instanceof Parenthesis) {
+      Parenthesis parenthesis = (Parenthesis) function;
       collectVariablesRecursive(parenthesis.getFunction());
-    } else if (function instanceof Root parenthesis) {
-      collectVariablesRecursive(parenthesis.getExpression());
-    } else if (function instanceof Module parenthesis) {
-      collectVariablesRecursive(parenthesis.getExpression());
-    } else if (function instanceof Division division) {
+    } else if (function instanceof Root) {
+      Root root = (Root) function;
+      collectVariablesRecursive(root.getExpression());
+    } else if (function instanceof Module) {
+      Module module = (Module) function;
+      collectVariablesRecursive(module.getExpression());
+    } else if (function instanceof Division) {
+      Division division = (Division) function;
       Function firstNum = division.getFirstNum();
       Function secondNum = division.getSecondNum();
       collectVariablesRecursive(firstNum);
       collectVariablesRecursive(secondNum);
     }
-
     return variableSet;
   }
 }
