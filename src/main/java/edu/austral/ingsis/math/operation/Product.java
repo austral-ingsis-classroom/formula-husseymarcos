@@ -1,17 +1,23 @@
 package edu.austral.ingsis.math.operation;
 
-import edu.austral.ingsis.math.expression.Expression;
+import edu.austral.ingsis.math.Function;
 
-import java.util.ArrayList;
-import java.util.List;
 
-public class Product implements Operation {
+public class Product implements Function {
 
-    private final Expression firstNum;
+    public Function getFirstNum() {
+        return firstNum;
+    }
 
-    private final Expression secondNum;
+    public Function getSecondNum() {
+        return secondNum;
+    }
 
-    public Product(Expression firstNum, Expression secondNum) {
+    private final Function firstNum;
+
+    private final Function secondNum;
+
+    public Product(Function firstNum, Function secondNum) {
         this.firstNum = firstNum;
         this.secondNum = secondNum;
     }
@@ -22,15 +28,8 @@ public class Product implements Operation {
     }
 
     @Override
-    public List<Expression> getExpressions() {
-        List<Expression> expressions = new ArrayList<>();
-        expressions.add(firstNum);
-        expressions.add(secondNum);
-        return expressions;
-    }
-
-    @Override
-    public String toString() {
+    public String getString() {
         return firstNum + " * " + secondNum;
     }
+
 }

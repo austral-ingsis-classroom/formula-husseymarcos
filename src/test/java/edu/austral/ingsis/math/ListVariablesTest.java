@@ -2,7 +2,6 @@ package edu.austral.ingsis.math;
 
 import edu.austral.ingsis.math.expression.*;
 import edu.austral.ingsis.math.operation.Division;
-import edu.austral.ingsis.math.operation.Operation;
 import edu.austral.ingsis.math.operation.Product;
 import edu.austral.ingsis.math.operation.Sum;
 import org.junit.jupiter.api.Test;
@@ -11,30 +10,25 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.hamcrest.Matchers.empty;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class ListVariablesTest {
 
   MathEngine mathEngine = new MathEngine();
-  List<Operation> operations = new ArrayList<>();
-
 
   /** Case 1 + 6 */
   @Test
   public void shouldListVariablesFunction1() {
 
-    Expression firstConstant = new Constant(1);
-    Expression secondConstant = new Constant(6);
+    Function firstConstant = new Constant(1);
+    Function secondConstant = new Constant(6);
 
-    operations.add(new Sum(firstConstant, secondConstant));
+    Function sum = new Sum(firstConstant, secondConstant);
 
+    mathEngine.setFunction(sum);
 
-    Function function = new Function(operations);
-    mathEngine.setFunction(function);
-
-    final List<String> result = mathEngine.getVariablesFromFunction();
+    final List<String> result = mathEngine.collectVariablesRecursive(sum);
 
     assertThat(result, empty());
   }
@@ -42,17 +36,13 @@ public class ListVariablesTest {
   /** Case 12 / div */
   @Test
   public void shouldListVariablesFunction2() {
-    Expression divVariable = new Variable("div", 10);
 
-    Expression firstConstant = new Constant(12);
+    Function firstConstant = new Constant(12);
+    Function div = new Variable("div", 10);
 
-    Operation e = new Division(firstConstant, divVariable);
-    operations.add(e);
+    Function division = new Division(firstConstant, div);
 
-    Function function = new Function(operations);
-    mathEngine.setFunction(function);
-
-    final List<String> result = mathEngine.getVariablesFromFunction();
+    final List<String> result = mathEngine.collectVariablesRecursive(division);
 
     assertThat(result, containsInAnyOrder("div"));
   }
@@ -61,24 +51,19 @@ public class ListVariablesTest {
   @Test
   public void shouldListVariablesFunction3() {
 
-    Expression nine = new Constant(9);
+    Function firstConstant = new Constant(9);
 
-    Expression x = new Variable("x", 10);
+    Function x = new Variable("x", 10);
 
-    Operation division = new Division(nine, x);
+    Function y = new Variable("y", 10);
 
-    Expression parenthesis = new Parenthesis(division);
+    Function div = new Division(firstConstant, x);
 
-    Expression y = new Variable("y", 10);
+    Function product = new Product(y, div);
 
-    Operation multiplication = new Product(y, parenthesis);
+    mathEngine.setFunction(product);
 
-    operations.add(multiplication);
-
-    Function function = new Function(operations);
-    mathEngine.setFunction(function);
-
-    final List<String> result = mathEngine.getVariablesFromFunction();
+    final List<String> result = mathEngine.collectVariablesRecursive(product);
 
     assertThat(result, containsInAnyOrder("x", "y"));
   }

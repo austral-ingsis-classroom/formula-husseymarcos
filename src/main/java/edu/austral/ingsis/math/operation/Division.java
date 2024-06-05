@@ -1,17 +1,23 @@
 package edu.austral.ingsis.math.operation;
 
-import edu.austral.ingsis.math.expression.Expression;
+import edu.austral.ingsis.math.Function;
 
-import java.util.ArrayList;
-import java.util.List;
 
-public class Division implements Operation {
+public class Division implements Function{
 
-    private final Expression firstNum;
+    public Function getFirstNum() {
+        return firstNum;
+    }
 
-    private final Expression secondNum;
+    public Function getSecondNum() {
+        return secondNum;
+    }
 
-    public Division(Expression firstNum, Expression secondNum) {
+    private final Function firstNum;
+
+    private final Function secondNum;
+
+    public Division(Function firstNum, Function secondNum) {
         this.firstNum = firstNum;
         this.secondNum = secondNum;
     }
@@ -22,15 +28,7 @@ public class Division implements Operation {
     }
 
     @Override
-    public List<Expression> getExpressions() {
-        List<Expression> expressions = new ArrayList<>();
-        expressions.add(firstNum);
-        expressions.add(secondNum);
-        return expressions;
-    }
-
-    @Override
-    public String toString() {
+    public String getString() {
         return firstNum + "/" + secondNum;
     }
 }

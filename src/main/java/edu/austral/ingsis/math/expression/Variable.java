@@ -1,6 +1,9 @@
 package edu.austral.ingsis.math.expression;
 
-public class Variable implements Expression {
+import edu.austral.ingsis.math.Function;
+
+
+public class Variable implements Function {
 
     private final String name;
 
@@ -15,6 +18,7 @@ public class Variable implements Expression {
         return name;
     }
 
+
     public int getValue() {
         return value;
     }
@@ -25,8 +29,9 @@ public class Variable implements Expression {
     }
 
     @Override
-    public String toString() {
+    public String getString() {
         return getName();
     }
+
 
 }

@@ -1,17 +1,22 @@
 package edu.austral.ingsis.math.operation;
 
-import edu.austral.ingsis.math.expression.Expression;
+import edu.austral.ingsis.math.Function;
 
-import java.util.ArrayList;
-import java.util.List;
+public class Sum implements Function {
 
-public class Sum implements Operation {
+    public Function getFirstNum() {
+        return firstNum;
+    }
 
-    private final Expression firstNum;
+    public Function getSecondNum() {
+        return secondNum;
+    }
 
-    private final Expression secondNum;
+    private final Function firstNum;
 
-    public Sum(Expression firstNum, Expression secondNum) {
+    private final Function secondNum;
+
+    public Sum(Function firstNum, Function secondNum) {
         this.firstNum = firstNum;
         this.secondNum = secondNum;
     }
@@ -22,16 +27,8 @@ public class Sum implements Operation {
     }
 
     @Override
-    public List<Expression> getExpressions() {
-        List<Expression> expressions = new ArrayList<>();
-        expressions.add(firstNum);
-        expressions.add(secondNum);
-        return expressions;
-    }
-
-    @Override
-    public String toString() {
-        return firstNum + " + " + secondNum;
+    public String getString() {
+        return firstNum + "+" + secondNum;
     }
 
 }

@@ -1,6 +1,9 @@
 package edu.austral.ingsis.math.expression;
 
-public class Constant implements Expression {
+import edu.austral.ingsis.math.Function;
+
+
+public class Constant implements Function {
 
     private final int value;
 
@@ -14,13 +17,7 @@ public class Constant implements Expression {
     }
 
     @Override
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    @Override
-    public String getName() {
+    public String getString() {
         return "" + evaluate();
     }
-
 }

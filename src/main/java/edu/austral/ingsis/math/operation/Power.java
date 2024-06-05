@@ -1,17 +1,22 @@
 package edu.austral.ingsis.math.operation;
 
-import edu.austral.ingsis.math.expression.Expression;
+import edu.austral.ingsis.math.Function;
 
-import java.util.ArrayList;
-import java.util.List;
+public class Power implements Function {
 
-public class Power implements Operation {
+    public Function getExpression() {
+        return expression;
+    }
 
-    private Expression expression;
+    public Function getPowerOf() {
+        return powerOf;
+    }
 
-    private Expression powerOf;
+    private final Function expression;
 
-    public Power(Expression expression, Expression powerOf) {
+    private final Function powerOf;
+
+    public Power(Function expression, Function powerOf) {
         this.expression = expression;
         this.powerOf = powerOf;
     }
@@ -22,10 +27,8 @@ public class Power implements Operation {
     }
 
     @Override
-    public List<Expression> getExpressions() {
-        List<Expression> expressions = new ArrayList<>();
-        expressions.add(expression);
-        expressions.add(powerOf);
-        return expressions;
+    public String getString() {
+        return "";
     }
+
 }

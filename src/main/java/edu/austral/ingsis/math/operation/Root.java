@@ -1,15 +1,13 @@
 package edu.austral.ingsis.math.operation;
 
-import edu.austral.ingsis.math.expression.Expression;
+import edu.austral.ingsis.math.Function;
 
-import java.util.ArrayList;
-import java.util.List;
 
-public class Root implements Operation {
+public class Root implements Function {
 
-    private Expression expression;
+    private Function expression;
 
-    public Root(Expression expression) {
+    public Root(Function expression) {
         this.expression = expression;
     }
 
@@ -19,9 +17,8 @@ public class Root implements Operation {
     }
 
     @Override
-    public List<Expression> getExpressions() {
-        List<Expression> expressions = new ArrayList<>();
-        expressions.add(expression);
-        return expressions;
+    public String getString() {
+        return "";
     }
+
 }
