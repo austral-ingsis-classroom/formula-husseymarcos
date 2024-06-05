@@ -1,15 +1,14 @@
 package edu.austral.ingsis.math;
 
-import edu.austral.ingsis.math.expression.*;
-import edu.austral.ingsis.math.operation.*;
-import edu.austral.ingsis.math.operation.Module;
-import org.junit.jupiter.api.Test;
-
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.hamcrest.Matchers.empty;
 
+import edu.austral.ingsis.math.expression.*;
+import edu.austral.ingsis.math.operation.*;
+import edu.austral.ingsis.math.operation.Module;
 import java.util.List;
+import org.junit.jupiter.api.Test;
 
 public class ListVariablesTest {
 
@@ -23,7 +22,6 @@ public class ListVariablesTest {
     Function secondConstant = new Constant(6);
 
     Function sum = new Sum(firstConstant, secondConstant);
-
 
     final List<String> result = mathEngine.collectVariablesRecursive(sum);
 
@@ -58,7 +56,6 @@ public class ListVariablesTest {
 
     Function product = new Product(y, div);
 
-
     final List<String> result = mathEngine.collectVariablesRecursive(product);
 
     assertThat(result, containsInAnyOrder("x", "y"));
@@ -76,7 +73,6 @@ public class ListVariablesTest {
     Function b = new Variable("b", 10);
 
     Function power = new Power(division, b);
-
 
     final List<String> result = mathEngine.collectVariablesRecursive(power);
 

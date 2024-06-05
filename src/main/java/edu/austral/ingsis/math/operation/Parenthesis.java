@@ -4,24 +4,23 @@ import edu.austral.ingsis.math.Function;
 
 public class Parenthesis implements Function {
 
-    public Function getFunction() {
-        return function;
-    }
+  public Function getFunction() {
+    return function;
+  }
 
-    Function function;
+  Function function;
 
-    public Parenthesis(Function function) {
-        this.function = function;
-    }
+  public Parenthesis(Function function) {
+    this.function = function;
+  }
 
+  @Override
+  public Double evaluate() {
+    return function.evaluate();
+  }
 
-    @Override
-    public Double evaluate() {
-        return function.evaluate();
-    }
-
-    @Override
-    public String getString() {
-        return "(" + function.getString() + ")";
-    }
+  @Override
+  public String getString() {
+    return "(" + function.getString() + ")";
+  }
 }
