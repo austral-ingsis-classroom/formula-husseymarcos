@@ -23,7 +23,7 @@ public class Division implements Function{
     }
 
     @Override
-    public int evaluate() {
+    public Double evaluate() {
         return firstNum.evaluate() / secondNum.evaluate();
     }
 

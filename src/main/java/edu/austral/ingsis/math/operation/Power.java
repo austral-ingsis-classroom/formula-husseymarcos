@@ -22,8 +22,8 @@ public class Power implements Function {
     }
 
     @Override
-    public int evaluate() {
-        return (int) Math.pow(expression.evaluate(), powerOf.evaluate());
+    public Double evaluate() {
+        return Math.pow(expression.evaluate(), powerOf.evaluate());
     }
 
     @Override

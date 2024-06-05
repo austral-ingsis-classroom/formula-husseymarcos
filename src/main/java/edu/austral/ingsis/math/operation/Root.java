@@ -16,8 +16,8 @@ public class Root implements Function {
     }
 
     @Override
-    public int evaluate() {
-        return (int) Math.sqrt(expression.evaluate());
+    public Double evaluate() {
+        return Math.sqrt(expression.evaluate());
     }
 
     @Override

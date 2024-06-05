@@ -2,7 +2,7 @@ package edu.austral.ingsis.math;
 
 
 public interface Function {
-    int evaluate();
+    Double evaluate();
     String getString();
 
 }

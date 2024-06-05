@@ -12,8 +12,8 @@ public class Constant implements Function {
     }
 
     @Override
-    public int evaluate() {
-        return value;
+    public Double evaluate() {
+        return (double) value;
     }
 
     @Override

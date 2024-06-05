@@ -24,8 +24,8 @@ public class Variable implements Function {
     }
 
     @Override
-    public int evaluate() {
-        return getValue();
+    public Double evaluate() {
+        return (double) getValue();
     }
 
     @Override

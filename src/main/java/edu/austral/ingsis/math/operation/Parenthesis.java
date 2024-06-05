@@ -16,7 +16,7 @@ public class Parenthesis implements Function {
 
 
     @Override
-    public int evaluate() {
+    public Double evaluate() {
         return function.evaluate();
     }
 
