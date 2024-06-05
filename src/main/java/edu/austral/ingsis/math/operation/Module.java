@@ -18,7 +18,7 @@ public class Module implements Function {
 
     @Override
     public String getString() {
-        return "";
+        return "|" + expression.getString() + "|";
     }
 
 

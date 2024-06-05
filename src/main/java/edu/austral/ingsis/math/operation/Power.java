@@ -28,7 +28,7 @@ public class Power implements Function {
 
     @Override
     public String getString() {
-        return "";
+        return expression.getString() + " ^ " + powerOf.getString();
     }
 
 }
