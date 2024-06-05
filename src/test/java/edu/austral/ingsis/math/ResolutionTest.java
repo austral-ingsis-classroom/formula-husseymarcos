@@ -2,6 +2,7 @@ package edu.austral.ingsis.math;
 
 import edu.austral.ingsis.math.expression.Constant;
 import edu.austral.ingsis.math.operation.*;
+import edu.austral.ingsis.math.operation.Module;
 import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -100,7 +101,20 @@ public class ResolutionTest {
   /** Case 36 ^ (1/2) */
   @Test
   public void shouldResolveSimpleFunction5() {
-    final Double result = 6d;
+
+      Function firstConstant = new Constant(36);
+
+
+      Function one  = new Constant(1);
+      Function two = new Constant(2);
+
+      Function division = new Division(one, two);
+      Function parenthesis = new Parenthesis(division);
+
+      Function power = new Power(firstConstant, parenthesis);
+
+      mathEngine.setFunction(power);
+    final Double result = mathEngine.evaluateFunction();
 
     assertThat(result, equalTo(6d));
   }
@@ -108,7 +122,19 @@ public class ResolutionTest {
   /** Case |136| */
   @Test
   public void shouldResolveSimpleFunction6() {
-    final Double result = 136d;
+      Function firstConstant = new Constant(136);
+
+      Function module = new Module(firstConstant);
+
+
+      mathEngine.setFunction(module);
+
+
+
+
+
+
+    final Double result = mathEngine.evaluateFunction();
 
     assertThat(result, equalTo(136d));
   }
@@ -116,7 +142,15 @@ public class ResolutionTest {
   /** Case |-136| */
   @Test
   public void shouldResolveSimpleFunction7() {
-    final Double result = 136d;
+
+      Function firstConstant = new Constant(-136);
+
+      Function module = new Module(firstConstant);
+
+      mathEngine.setFunction(module);
+
+
+    final Double result = mathEngine.evaluateFunction();
 
     assertThat(result, equalTo(136d));
   }
@@ -124,7 +158,22 @@ public class ResolutionTest {
   /** Case (5 - 5) * 8 */
   @Test
   public void shouldResolveSimpleFunction8() {
-    final Double result = 0d;
+
+      Function firstFive = new Constant(5);
+      Function secondFive = new Constant(5);
+
+      Function sub = new Subtraction(firstFive, secondFive);
+
+      Function parenthesis = new Parenthesis(sub);
+
+      Function eight = new Constant(8);
+
+      Function product = new Product(parenthesis, eight);
+
+      mathEngine.setFunction(product);
+      
+
+    final Double result = mathEngine.evaluateFunction();
 
     assertThat(result, equalTo(0d));
   }
