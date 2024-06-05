@@ -171,7 +171,7 @@ public class ResolutionTest {
       Function product = new Product(parenthesis, eight);
 
       mathEngine.setFunction(product);
-      
+
 
     final Double result = mathEngine.evaluateFunction();
 
