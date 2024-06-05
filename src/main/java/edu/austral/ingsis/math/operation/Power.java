@@ -4,6 +4,10 @@ import edu.austral.ingsis.math.Function;
 
 public class Power implements Function {
 
+    private final Function expression;
+
+    private final Function powerOf;
+
     public Function getExpression() {
         return expression;
     }
@@ -11,10 +15,6 @@ public class Power implements Function {
     public Function getPowerOf() {
         return powerOf;
     }
-
-    private final Function expression;
-
-    private final Function powerOf;
 
     public Power(Function expression, Function powerOf) {
         this.expression = expression;

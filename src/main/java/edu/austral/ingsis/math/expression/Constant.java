@@ -18,6 +18,6 @@ public class Constant implements Function {
 
     @Override
     public String getString() {
-        return "" + evaluate();
+        return String.valueOf(value);
     }
 }

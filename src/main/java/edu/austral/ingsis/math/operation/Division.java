@@ -29,6 +29,6 @@ public class Division implements Function{
 
     @Override
     public String getString() {
-        return firstNum + "/" + secondNum;
+        return firstNum.getString() + " / " + secondNum.getString();
     }
 }

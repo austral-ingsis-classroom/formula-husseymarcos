@@ -20,6 +20,10 @@ public class MathEngine {
         this.function = function;
     }
 
+    public String getFunctionString() {
+        return function.getString();
+    }
+
     public List<String>  collectVariablesRecursive(Function function) {
 
         if (function instanceof Variable) {
@@ -33,6 +37,9 @@ public class MathEngine {
         } else if (function instanceof Product multiplication) {
             collectVariablesRecursive(multiplication.getFirstNum());
             collectVariablesRecursive(multiplication.getSecondNum());
+        } else if (function instanceof Power power) {
+            collectVariablesRecursive(power.getExpression());
+            collectVariablesRecursive(power.getPowerOf());
         } else if (function instanceof Division division) {
             Function firstNum = division.getFirstNum();
             Function secondNum = division.getSecondNum();

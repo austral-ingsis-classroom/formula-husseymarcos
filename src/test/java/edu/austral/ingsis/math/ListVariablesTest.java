@@ -2,6 +2,7 @@ package edu.austral.ingsis.math;
 
 import edu.austral.ingsis.math.expression.*;
 import edu.austral.ingsis.math.operation.Division;
+import edu.austral.ingsis.math.operation.Power;
 import edu.austral.ingsis.math.operation.Product;
 import edu.austral.ingsis.math.operation.Sum;
 import org.junit.jupiter.api.Test;
@@ -71,7 +72,19 @@ public class ListVariablesTest {
   /** Case (27 / a) ^ b */
   @Test
   public void shouldListVariablesFunction4() {
-    final List<String> result = Collections.emptyList();
+    Function twentySeven = new Constant(27);
+
+    Function a = new Variable("a", 10);
+
+    Function division = new Division(twentySeven, a);
+
+    Function b = new Variable("b", 10);
+
+    Function power = new Power(division, b);
+
+    mathEngine.setFunction(power);
+
+    final List<String> result = mathEngine.collectVariablesRecursive(power);
 
     assertThat(result, containsInAnyOrder("a", "b"));
   }
