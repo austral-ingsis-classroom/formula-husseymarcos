@@ -1,17 +1,14 @@
 package edu.austral.ingsis.math;
 
 import edu.austral.ingsis.math.expression.*;
-import edu.austral.ingsis.math.operation.Division;
-import edu.austral.ingsis.math.operation.Power;
-import edu.austral.ingsis.math.operation.Product;
-import edu.austral.ingsis.math.operation.Sum;
+import edu.austral.ingsis.math.operation.*;
+import edu.austral.ingsis.math.operation.Module;
 import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.hamcrest.Matchers.empty;
 
-import java.util.Collections;
 import java.util.List;
 
 public class ListVariablesTest {
@@ -27,7 +24,6 @@ public class ListVariablesTest {
 
     Function sum = new Sum(firstConstant, secondConstant);
 
-    mathEngine.setFunction(sum);
 
     final List<String> result = mathEngine.collectVariablesRecursive(sum);
 
@@ -62,7 +58,6 @@ public class ListVariablesTest {
 
     Function product = new Product(y, div);
 
-    mathEngine.setFunction(product);
 
     final List<String> result = mathEngine.collectVariablesRecursive(product);
 
@@ -82,7 +77,6 @@ public class ListVariablesTest {
 
     Function power = new Power(division, b);
 
-    mathEngine.setFunction(power);
 
     final List<String> result = mathEngine.collectVariablesRecursive(power);
 
@@ -92,7 +86,19 @@ public class ListVariablesTest {
   /** Case z ^ (1/2) */
   @Test
   public void shouldListVariablesFunction5() {
-    final List<String> result = Collections.emptyList();
+
+    Function z = new Variable("z", 10);
+
+    Function one = new Constant(1);
+    Function two = new Constant(2);
+
+    Function division = new Division(one, two);
+
+    Function parenthesis = new Parenthesis(division);
+
+    Function power = new Power(z, parenthesis);
+
+    final List<String> result = mathEngine.collectVariablesRecursive(power);
 
     assertThat(result, containsInAnyOrder("z"));
   }
@@ -100,7 +106,16 @@ public class ListVariablesTest {
   /** Case |value| - 8 */
   @Test
   public void shouldListVariablesFunction6() {
-    final List<String> result = Collections.emptyList();
+
+    Function value = new Variable("value", 10);
+
+    Function module = new Module(value);
+
+    Function eight = new Constant(8);
+
+    Function sub = new Subtraction(module, eight);
+
+    final List<String> result = mathEngine.collectVariablesRecursive(sub);
 
     assertThat(result, containsInAnyOrder("value"));
   }
@@ -108,7 +123,15 @@ public class ListVariablesTest {
   /** Case |value| - 8 */
   @Test
   public void shouldListVariablesFunction7() {
-    final List<String> result = Collections.emptyList();
+    Function value = new Variable("value", 10);
+
+    Function module = new Module(value);
+
+    Function eight = new Constant(8);
+
+    Function sub = new Subtraction(module, eight);
+
+    final List<String> result = mathEngine.collectVariablesRecursive(sub);
 
     assertThat(result, containsInAnyOrder("value"));
   }
@@ -116,7 +139,20 @@ public class ListVariablesTest {
   /** Case (5 - i) * 8 */
   @Test
   public void shouldListVariablesFunction8() {
-    final List<String> result = Collections.emptyList();
+
+    Function five = new Constant(5);
+
+    Function value = new Variable("i", 1);
+
+    Function sub = new Subtraction(five, value);
+
+    Function parenthesis = new Parenthesis(sub);
+
+    Function eight = new Constant(8);
+
+    Function product = new Product(parenthesis, eight);
+
+    final List<String> result = mathEngine.collectVariablesRecursive(product);
 
     assertThat(result, containsInAnyOrder("i"));
   }

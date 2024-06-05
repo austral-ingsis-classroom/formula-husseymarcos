@@ -2,6 +2,7 @@ package edu.austral.ingsis.math;
 
 import edu.austral.ingsis.math.expression.Variable;
 import edu.austral.ingsis.math.operation.*;
+import edu.austral.ingsis.math.operation.Module;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,6 +41,12 @@ public class MathEngine {
         } else if (function instanceof Power power) {
             collectVariablesRecursive(power.getExpression());
             collectVariablesRecursive(power.getPowerOf());
+        } else if (function instanceof Parenthesis parenthesis) {
+            collectVariablesRecursive(parenthesis.getFunction());
+        } else if (function instanceof Root parenthesis) {
+            collectVariablesRecursive(parenthesis.getExpression());
+        } else if (function instanceof Module parenthesis) {
+            collectVariablesRecursive(parenthesis.getExpression());
         } else if (function instanceof Division division) {
             Function firstNum = division.getFirstNum();
             Function secondNum = division.getSecondNum();

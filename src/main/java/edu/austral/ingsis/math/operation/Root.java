@@ -5,7 +5,11 @@ import edu.austral.ingsis.math.Function;
 
 public class Root implements Function {
 
-    private Function expression;
+    public Function getExpression() {
+        return expression;
+    }
+
+    private final Function expression;
 
     public Root(Function expression) {
         this.expression = expression;

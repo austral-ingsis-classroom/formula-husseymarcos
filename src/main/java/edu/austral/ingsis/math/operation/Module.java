@@ -5,6 +5,10 @@ import edu.austral.ingsis.math.Function;
 
 public class Module implements Function {
 
+    public Function getExpression() {
+        return expression;
+    }
+
     private final Function expression;
 
     public Module(Function expression) {

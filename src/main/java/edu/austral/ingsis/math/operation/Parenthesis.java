@@ -4,6 +4,10 @@ import edu.austral.ingsis.math.Function;
 
 public class Parenthesis implements Function {
 
+    public Function getFunction() {
+        return function;
+    }
+
     Function function;
 
     public Parenthesis(Function function) {
