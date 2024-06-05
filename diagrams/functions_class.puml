@@ -2,44 +2,88 @@
 
 class MathEngine{
     Function function
+    List<String> variables
     double evaluateFunction()
-    void addFunction(Function function)
+    void setFunction(Function function)
     String printFunction()
-    List<String> getVariablesFromFunction()
+    List<String> collectVariablesRecursively(Function function)
 }
 MathEngine --> Function
 
-class Function{
-    List<Operation> listOfOperations
+interface Function{
     Double evaluate();
-    void printEquation();
+    String getString();
 }
 
-Function --> Operation
 
-
-interface Expression{
-    Double evaluate(Operator)
+class Constant implements Function{
+int value
+Double evaluate();
+    String getString();
 }
 
-interface Operation{
-    int evaluate(Expression expression)
-    List<Expression> getExpressions
+
+class Variable implements Function{
+String name
+int value
+Double evaluate();
+    String getString();
 }
 
-Operation -> Expression
+class Division implements Function{
+Function firstNum
+Function secondNum
 
-class Sum implements Operation{
-    int evaluate(Expression expression)
+Double evaluate();
+    String getString();
 }
 
-class Variable implements Expression{
+class Module implements Function{
+Function expression
+Double evaluate();
+    String getString();
 }
 
-class Constant implements Expression{
+class Parenthesis implements Function{
+Function expression
+Double evaluate();
+    String getString();
 }
 
-interface Expression{}
+class Power implements Function{
+Function firstNum
+Function secondNum
+Double evaluate();
+    String getString();
+}
+
+class Product implements Function{
+Function firstNum
+Function secondNum
+Double evaluate();
+    String getString();
+}
+
+class Root implements Function{
+Function expression
+Double evaluate();
+    String getString();
+}
+
+class Subtraction implements Function{
+Function firstNum
+Function secondNum
+Double evaluate();
+    String getString();
+}
+
+class Sum implements Function{
+Function firstNum
+Function secondNum
+Double evaluate();
+    String getString();
+}
+
 
 
 @enduml
